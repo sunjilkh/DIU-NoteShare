@@ -1,0 +1,69 @@
+{% extends 'usernavigation.html'%}
+{% load static %}
+{% block body %}
+
+{% if error == "no" %}
+<script>
+	alert('Notes Uploaded Successfully');
+    window.location=('{% url 'view_mynotes' %}');
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+	alert('Something went wrong, Try Again');
+</script>
+{% endif %}
+
+<div class="container card shadow mt-5"
+		style="font-family: 'IBM Plex Sans', sans-serif;">
+	<div class="card-body">
+	<h2 class="text-center">Upload Notes</h2>
+	<hr>
+	<form method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		<div class="row">
+			<div class="col-sm-6">
+					<label> Branch</label>
+						<select class="form-control" name="branch" required>
+						  <option value="">--- Select Branch ---</option>
+						  <option value="Computer Science">Computer Science</option>
+						  <option value="Mechanical">Mechanical</option>
+						  <option value="Civil">Civil</option>
+						  <option value="Electronics">Electronics</option>
+						  <option value="Electric">Electric</option>
+						  <option value="IT">IT</option>
+						</select>
+
+					<label> Subject</label>
+					<input type="text" class="form-control" placeholder="Enter Subject" name="subject" required>
+
+					<label>Notes File</label>
+					<input type="file" name="notesfile" class="form-control" required>
+
+					<label> File Type</label>
+					  <select class="form-control" name="filetype" required>
+						<option value="PDF">--- Select File ---</option>
+						<option value="PDF">PDF</option>
+						<option value="PPT">PPT</option>
+						<option value="DOC/DOCX">DOC/DOCX</option>
+						<option value="TXT">TXT</option>
+						<option value="Image">Image</option>
+						<option value="ZIP/RAR">ZIP/RAR</option>
+					  </select>
+
+					<label>Short Description</label>
+						<textarea class="form-control" rows="2" name="description" required></textarea>
+                    <input type="submit" class="btn btn-primary mt-2" value="Submit">
+
+			</div>
+			<div class="col-sm-6">
+				<label>Details</label>
+				<textarea class="form-control" rows="10" name="details" required></textarea>                
+			</div>
+		
+		</div>
+	</form>
+</div>
+</div>
+{% endblock %}

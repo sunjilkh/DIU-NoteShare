@@ -1,0 +1,102 @@
+{% extends 'usernavigation.html'%}
+{% load static %}
+{% block body %}
+<br><br><br>
+<div class="container card shadow mt-5">
+	<div class="card-body">
+           <h4 class="text-center">Details</h4>
+			<br>
+			<table id="example" class="table table-striped table-bordered" style="width:100%">
+				<thead style="background-color : #607d8b;">
+					<tr>
+						<th>Uploaded By</th>
+						<th>Uploading Date</th>
+						<th>Branch</th>
+						<th>Subject</th>
+						<th>Download Notes</th>
+						<th>File Type</th>
+						<th>Description</th>
+						<th>Status</th>
+						<th>votes</th>
+						<th colspan="2">upvotes</th>
+						
+					</tr>
+					</thead>
+		
+				<tbody>
+				<tr>
+					<td>{{n.user.username}}</td>
+					<td>{{n.uploadingdate}}</td>
+					<td>{{n.branch}}</td>
+					<td>{{n.subject}}</td>
+					<td><a href="{{n.notesfile.url}}" class="btn btn-success" download>Download</a></td>
+					<td>{{n.filetype}}</td>
+					<td>{{n.description}}</td>
+					<td>{{n.status}}</td>
+					<td class="count{{n.id}}">{{n.upvotes}}</td>
+					{% if action == ' ' %}
+						<td colspan="2" style='white-space: nowrap'><button class="btn btn-primary vote upvote" id="upvote" name="upvote" value={{n.id}}>upvote</button>
+						<button class="btn btn-primary vote downvote" name="downvote" id="upvote" value={{n.id}}>downvote</button>
+						</td>
+					{% elif action == "upvote" %}
+						<td colspan="2" style='white-space: nowrap'><button class="btn btn-primary vote upvote" id="upvote" name="upvote" value={{n.id}} disabled>upvote</button>
+						<button class="btn btn-primary vote downvote" name="downvote" id="upvote" value={{n.id}}>downvote</button>
+						</td>
+					{% else %}
+						<td colspan="2" style='white-space: nowrap'><button class="btn btn-primary vote upvote" id="upvote" name="upvote" value={{n.id}}>upvote</button>
+						<button class="btn btn-primary vote downvote" name="downvote" id="upvote" value={{n.id}} disabled>downvote</button>
+						</td>
+					{% endif %} 
+
+                </tr>
+				</tbody>
+			</table>
+    </div>
+</div>
+
+<!-- description -->
+<Section class="details container">
+	<h1 class="heading text-left pt-5">Details Description</h1>
+	<textarea name="detail" style="color: black;" id="" cols="170" rows="8" disabled>{{n.details}}</textarea>
+</Section>
+
+<section class="comments py-4">
+	<div class="container">
+		<div class="row">
+            <div class="col-sm-5 col-md-6 col-12 pb-4" id="cmntss">
+                <h1>Comments</h1>
+                {% for cmnt in cmnts %}
+                <div class="comment mt-4 text-justify">
+                    <h4>{{cmnt.user.username}}</h4>
+                   
+                    <p>{{cmnt.dates}}</p> 
+                    <p>{{cmnt.cmnt}}</p>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
+                <form id="algin-form">
+					{% csrf_token %}
+                    <div class="form-group">
+                        <h4>Leave a comment</h4>
+                        <label for="message">Message</label>
+                        <textarea name="msg" id="smsg" msg cols="100" rows="8" class="form-control" required></textarea>
+                    </div>
+                    <div class="form-group" style="display: none;">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="uemail" value="{{user}}" class="form-control" required>
+						
+                    </div>
+					
+                    <div class="form-group">
+                        <button type="submit" id="post" name="cmnt" value={{n.id}} class="btn btn-primary">Post Comment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+	</div>
+</section>
+
+<script src="{% static 'js/script.js' %}"></script>
+
+{% endblock %}
