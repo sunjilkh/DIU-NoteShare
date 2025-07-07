@@ -1,0 +1,77 @@
+{% extends 'navigation.html'%}
+{% load static %}
+{% block body %}
+
+{% if error == "no" %}
+<script>
+    alert('Logged In Successfully...');
+    
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert('Invalid Login Credentials, Try Again');
+</script>
+{% endif %}
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+    .form-title {
+        font-family: "poppins", sans-serif;
+        font-weight: 700;
+        font-size: 36px;
+    }
+    .signin-content{
+        background-color: white;
+        box-shadow: 2px 1px 3px #c1bbbb;
+    }
+
+    .form-group{
+        font-family: "poppins", sans-serif;
+        font-weight: 400;
+
+    }
+
+    .form-group form-button {
+        font-family: "poppins", sans-serif;
+        font-weight: 700;
+    }
+</style>
+
+<div class="main">
+
+        <section class="sign-in">
+            <div class="container py-5 pt-5">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img src="{% static 'images/signin-image.jpg' %}" alt="sing up image"></figure>
+                        <a href="{%url 'signup' %}" class="signup-image-link">Create an account</a>
+                    </div>
+
+                    <div class="signin-form">
+                        <h2 class="form-title">Sign In</h2>
+                        <form method="POST" class="register-form">
+                            {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="your_name"><i class="fa fa-user" aria-hidden="true"></i></label>
+                                 <input type="email" placeholder="Enter Email ID" name="emailid" class="box" required>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="your_pass"><i class="fa fa-lock" aria-hidden="true"></i></label>
+                                    <input type="password" placeholder="Password" name="pwd" class="box" required>
+
+                                </div>
+                                <div class="form-group form-button">
+                                    <input type="submit" class="form-submit" value="login">
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+</div>
+
+{% endblock %}

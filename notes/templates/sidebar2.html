@@ -1,0 +1,78 @@
+{% load static %}
+
+    <div class="wrapper">
+        <div class="section">
+            <div class="top_navbar">
+                <div class="hamburger">
+                    <a href="#">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                </div>
+                
+            </div>
+            <div class="sidebar">
+                <div class="profile">
+                    <img src="{% static 'images/myimage.jpg' %}"
+                        alt="profile_picture">
+                    <h3> {{ request.user.username }}</h3>
+                    <p>Admin</p>
+                </div>
+                <ul>
+                    <li>
+                        <a href="{% url 'admin_home' %}" class="active">
+                            <span class="icon"><i class="fas fa-home"></i></span>
+                            <span class="item">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <p>
+                            <button  class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                              View All Notes
+                            </button>
+                        </p> 
+                          <div  class="collapse" id="collapseExample">
+                            <div class="card card-body" style="background-color: #0769B9; border:none;">
+                              <ul>
+                                <li>
+                                    <a href="{% url 'pending_notes' %}">Pending Notes</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'accepted_notes' %}">Accepted Notes</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'rejected_notes' %}">Rejected Notes</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'all_notes' %}">All Notes</a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                    </li>
+                    <li>
+                        <a href="{% url 'view_users' %}">
+                            <span class="icon"><i class="fas fa-user-friends"></i></span>
+                            <span class="item">View users</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'change_passwordadmin' %}">
+                            <span class="icon"><i class="fas fa-cog"></i></span> Settings
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'logout' %}">
+                            <span class="icon"><i class="si si-logout mr-5"></i></span> Sign Out
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon"><i class="fas fa-chart-line"></i></span>
+                            <span class="item">Reports</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+
+        </div>

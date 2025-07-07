@@ -1,0 +1,120 @@
+.rounded-circle{
+  display: block;
+  max-width: 530px;
+  max-height:285px;
+  width: auto;
+  height: auto; 
+}
+
+
+.nav-link{ 
+  color : black !important;
+
+}
+
+.comment{
+  border: 1px solid #ced4da;
+  
+}
+
+.comment p{
+  padding: 5px 4px;
+  margin-top: -1px;
+}
+
+.comment p:first-of-type{
+  padding:0px 4px;
+  border-bottom: 1px solid #ced4da;
+  background-color: #F5F5F5;
+  margin: 0px;
+}
+
+.comment p:last-of-type{
+  padding:2px 4px;
+  padding-bottom: 60px;
+
+}
+
+.comment h4{
+  border-bottom: 1px solid #ced4da;
+  background-color: #F5F5F5;
+  padding: 6px 4px;
+  margin-bottom: 0px;
+}
+
+.nav-link:hover{
+  color : white !important;
+  font-weight : bold;
+  background-color : #60cf72;
+  border-radius : 10px;
+}
+
+
+.transparentbox{
+width : 100%;
+height : 500px;
+background-color : lightgrey;
+border : 1px solid #CD853F;
+opacity : 0.6;
+}
+
+.transparentbox p{
+margin-top : 10%;
+font-weight : bold;
+font-size : 60px;
+font-family :'Monotype Corsiva';
+color : DarkRed;
+text-align : center;
+}
+
+.halfcircle{
+ height : 75px;
+ width : 150px;
+ border-radius : 90px 90px 0 0;
+ margin : 0px;
+ background-color : green;
+}
+
+.halfcircleBottom{
+ height : 75px;
+ width : 150px;
+ border-radius : 0px 0px 90px 90px;
+ margin : 0px;
+ background-color : darkslategrey;
+}
+
+.box1 p{
+ font-weight : bold;
+ color : white;
+ font-family : 'monotype corsiva';
+ text-align : center;
+
+}
+
+
+ul.order {
+	 padding: 15px 0;
+	  z-index: 2;
+    list-style: none;
+    float: left;
+}
+
+
+ul.order .fa{
+
+    height: 35px;
+    width: 35px;
+    background: #fff;
+    padding: 4px;
+    border-radius: 50%;
+
+}
+  
+ul.order li {
+	padding: 10px;
+	display: inline-block;
+}
+
+/* for profile pic in edit profile */
+
+

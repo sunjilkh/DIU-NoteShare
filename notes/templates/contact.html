@@ -1,0 +1,86 @@
+{% extends 'navigation.html'%}
+{% load static %}
+{% block body %}
+
+{% if error == "no" %}
+<script>
+    alert('Your Message has been Send Successfully');
+    window.location = ('{% url '
+        contact ' %}');
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert('Something went wrong, Try Again');
+</script>
+{% endif %}
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+    .form-title {
+        font-family: "poppins", sans-serif;
+        font-weight: 700;
+        font-size: 36px;
+    }
+    .signin-content{
+        background-color: white;
+        box-shadow: 2px 1px 3px #c1bbbb;
+    }
+
+    .form-group{
+        font-family: "poppins", sans-serif;
+        font-weight: 400;
+
+    }
+
+    .form-group form-button {
+        font-family: "poppins", sans-serif;
+        font-weight: 700;
+    }
+</style>
+
+<div class="main">
+
+    <section class="sign-in">
+        <div class="container py-5 mt-5">
+            <div class="signin-content">
+                <div class="signin-image">
+                    <figure><img src="{% static 'images/contactimg.png' %}" alt="sing up image"></figure>
+                </div>
+
+                <div class="signin-form">
+                    <h2 class="form-title">Contact</h2>
+                    <form method="POST" class="register-form"  enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="your_name"><i class="fa fa-user" aria-hidden="true"></i></label>
+                            <input type="text" placeholder="Your Name" name="fullname" class="box">
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><i class="fa fa-envelope" aria-hidden="true"></i></label>
+                            <input type="email" placeholder="Enter Email ID" name="email" class="box">
+                        </div>
+                        <div class="form-group">
+                            <label for="name"><i class="fa fa-phone" aria-hidden="true"></i></i></label>
+                            <input type="number" placeholder="Enter Contact Number" class="box" name="mobile" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="name"><i class="fa fa-sticky-note" aria-hidden="true"></i></label>
+                            <input type="text" placeholder="Subject" name="subject" class="box">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message"cols="70" rows="5" class="box address" placeholder="Send Message..." style="border: 1px solid;"></textarea>
+                        </div>
+
+                        <div class="form-group form-button">
+                            <input type="submit" class="form-submit" value="Send Now">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
